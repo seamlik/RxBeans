@@ -1,0 +1,23 @@
+group = 'rxbeans'
+version = '0.1'
+
+apply plugin: 'java-library'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+  api 'com.google.code.findbugs:jsr305:3.0.2'
+  api 'io.reactivex.rxjava2:rxjava:2.1.8'
+}
+
+javadoc {
+  options {
+    links(
+        'https://docs.oracle.com/javase/9/docs/api', // bugged
+        'http://reactivex.io/RxJava/javadoc'
+    )
+    addBooleanOption('javafx') // bugged
+  }
+}
