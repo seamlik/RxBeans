@@ -7,9 +7,7 @@ import io.reactivex.processors.BehaviorProcessor;
 import io.reactivex.processors.FlowableProcessor;
 import java.util.Optional;
 import javax.annotation.Nonnull;
-import javax.annotation.concurrent.ThreadSafe;
 
-@ThreadSafe
 public class ObjectProperty<T> implements MutableProperty<T> {
 
   private final FlowableProcessor<Optional<T>> stream;
