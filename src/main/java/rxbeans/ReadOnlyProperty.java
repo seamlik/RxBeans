@@ -3,7 +3,6 @@ package rxbeans;
 import io.reactivex.Flowable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
-import java.util.Optional;
 import javax.annotation.Nonnull;
 import javax.annotation.concurrent.ThreadSafe;
 
@@ -15,7 +14,7 @@ public interface ReadOnlyProperty<T> extends Property {
   T getDefault();
 
   @Nonnull
-  Flowable<Optional<T>> getStream();
+  Flowable getStream();
 
   void getAndDo(@Nonnull Consumer<T> function) throws Exception;
 

@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.Collections;
 import javax.annotation.Nonnull;
 
-public class CollectionProperty<T> extends ObjectProperty<Collection<T>>
+public class CollectionProperty<T> extends NonnullProperty<Collection<T>>
     implements ModifiableCollectionProperty<T> {
 
   private final FlowableProcessor<ReadOnlyCollectionProperty.ElementsChangedEvent> eventStream;
