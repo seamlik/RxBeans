@@ -9,7 +9,6 @@ import javax.annotation.Nonnull;
 public class Object {
 
   private final FlowableProcessor<EventObject> eventStream;
-  private final ObjectProperty<String> name = new ObjectProperty<>();
 
   public Object() {
     final FlowableProcessor<EventObject> unsafeStream = PublishProcessor.create();
