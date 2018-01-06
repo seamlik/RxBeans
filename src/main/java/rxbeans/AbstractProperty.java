@@ -2,6 +2,7 @@ package rxbeans;
 
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import java.util.Objects;
 import javax.annotation.Nonnull;
 
 public abstract class AbstractProperty<T> implements MutableProperty<T> {
@@ -27,6 +28,16 @@ public abstract class AbstractProperty<T> implements MutableProperty<T> {
   @Override
   public synchronized void set(final T value) {
     this.value = value;
+  }
+
+  @Override
+  public synchronized boolean change(final T value) {
+    if (Objects.equals(value, this.value)) {
+      return false;
+    } else {
+      set(value);
+      return true;
+    }
   }
 
   @Override
