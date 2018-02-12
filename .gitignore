@@ -1,8 +1,8 @@
 *.iml
-/.gradle/
-/.idea/
-/build/
+.gradle/
+.idea/
 /gradle/wrapper/
 /gradlew
 /gradlew.bat
-/out/
+build/
+out/
