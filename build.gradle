@@ -1,6 +1,7 @@
 apply plugin: 'java-library'
 
 group = 'rxbeans'
+sourceCompatibility = 8
 version = '0.1'
 
 repositories {
