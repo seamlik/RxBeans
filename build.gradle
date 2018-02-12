@@ -15,11 +15,11 @@ dependencies {
 
 javadoc {
   options {
-    links( // bugged
+    links(
         'https://docs.oracle.com/javase/9/docs/api',
         'http://reactivex.io/RxJava/javadoc',
         'https://static.javadoc.io/com.google.code.findbugs/jsr305/3.0.2'
     )
-    addBooleanOption('javafx') // bugged
+    addBooleanOption('javafx', true)
   }
 }
