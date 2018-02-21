@@ -1,8 +1,8 @@
 package rxbeans;
 
 import io.reactivex.Flowable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
+import java.util.function.Consumer;
+import java.util.function.Function;
 import javax.annotation.Nonnull;
 
 public interface ReadOnlyProperty<T> extends Property {
