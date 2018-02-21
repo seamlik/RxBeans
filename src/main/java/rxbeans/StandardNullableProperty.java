@@ -6,11 +6,13 @@ import io.reactivex.processors.FlowableProcessor;
 import java.util.Optional;
 import javax.annotation.Nonnull;
 
-public class NullableProperty<T> extends AbstractProperty<T> implements NullableReadOnlyProperty<T> {
+public class StandardNullableProperty<T>
+    extends AbstractProperty<T>
+    implements NullableReadOnlyProperty<T> {
 
   private final FlowableProcessor<Optional<T>> stream;
 
-  public NullableProperty(final T defaultValue) {
+  public StandardNullableProperty(final T defaultValue) {
     super(defaultValue);
     final FlowableProcessor<Optional<T>> unsafeStream = BehaviorProcessor.createDefault(
         Optional.ofNullable(defaultValue)
