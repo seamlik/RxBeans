@@ -6,10 +6,16 @@ import io.reactivex.processors.PublishProcessor;
 import java.util.EventObject;
 import javax.annotation.Nonnull;
 
+/**
+ * Reference implementation of {@link Object}.
+ */
 public class StandardObject implements Object {
 
   private final FlowableProcessor<EventObject> eventStream;
 
+  /**
+   * Default constructor.
+   */
   public StandardObject() {
     final FlowableProcessor<EventObject> unsafeStream = PublishProcessor.create();
     eventStream = unsafeStream.toSerialized();
@@ -20,6 +26,7 @@ public class StandardObject implements Object {
   }
 
   @Override
+  @Nonnull
   public Flowable<EventObject> getEventStream() {
     return eventStream;
   }

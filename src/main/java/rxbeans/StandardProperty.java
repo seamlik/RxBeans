@@ -4,11 +4,18 @@ import io.reactivex.Flowable;
 import io.reactivex.processors.BehaviorProcessor;
 import javax.annotation.Nonnull;
 
+/**
+ * Reference implementation of {@link Property}.
+ * @param <T>
+ */
 public class StandardProperty<T> implements MutableProperty<T> {
 
   private final BehaviorProcessor<T> stream;
   private final T defaultValue;
 
+  /**
+   * Default constructor.
+   */
   public StandardProperty(@Nonnull final T defaultValue) {
     this.defaultValue = defaultValue;
     stream = BehaviorProcessor.createDefault(defaultValue);

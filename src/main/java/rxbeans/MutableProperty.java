@@ -2,6 +2,9 @@ package rxbeans;
 
 import java.util.Objects;
 
+/**
+ * {@link Property} with write access.
+ */
 public interface MutableProperty<T> extends Property<T> {
 
   /**
