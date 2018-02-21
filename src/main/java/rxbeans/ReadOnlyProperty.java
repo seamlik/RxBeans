@@ -14,7 +14,15 @@ public interface ReadOnlyProperty<T> extends Property {
   @Nonnull
   Flowable getStream();
 
-  void getAndDo(@Nonnull Consumer<T> function) throws Exception;
+  default void getAndDo(@Nonnull final Consumer<T> function) throws Exception {
+    synchronized (this) {
+      function.accept(get());
+    }
+  }
 
-  <R> R getAndDo(@Nonnull Function<T, R> function) throws Exception;
+  default <R> R getAndDo(@Nonnull final Function<T, R> function) throws Exception {
+    synchronized (this) {
+      return function.apply(get());
+    }
+  }
 }

@@ -1,9 +1,6 @@
 package rxbeans;
 
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 import java.util.Objects;
-import javax.annotation.Nonnull;
 
 public abstract class AbstractProperty<T> implements ReadOnlyProperty<T>, WriteOnlyProperty<T> {
 
@@ -38,15 +35,5 @@ public abstract class AbstractProperty<T> implements ReadOnlyProperty<T>, WriteO
       set(value);
       return true;
     }
-  }
-
-  @Override
-  public synchronized void getAndDo(@Nonnull final Consumer<T> function) throws Exception {
-    function.accept(value);
-  }
-
-  @Override
-  public synchronized <R> R getAndDo(@Nonnull final Function<T, R> function) throws Exception {
-    return function.apply(value);
   }
 }
