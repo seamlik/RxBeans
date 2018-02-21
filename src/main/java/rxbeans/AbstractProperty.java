@@ -5,7 +5,7 @@ import io.reactivex.functions.Function;
 import java.util.Objects;
 import javax.annotation.Nonnull;
 
-public abstract class AbstractProperty<T> implements MutableProperty<T> {
+public abstract class AbstractProperty<T> implements ReadOnlyProperty<T>, WriteOnlyProperty<T> {
 
   private final T defaultValue;
   private T value;
