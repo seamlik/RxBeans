@@ -12,7 +12,7 @@ public interface ReadOnlyProperty<T> extends Property {
   T getDefault();
 
   @Nonnull
-  Flowable getStream();
+  Flowable<T> getStream();
 
   default void getAndDo(@Nonnull final Consumer<T> function) throws Exception {
     synchronized (this) {

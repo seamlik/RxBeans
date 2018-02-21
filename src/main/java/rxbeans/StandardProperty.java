@@ -5,13 +5,11 @@ import io.reactivex.processors.BehaviorProcessor;
 import io.reactivex.processors.FlowableProcessor;
 import javax.annotation.Nonnull;
 
-public class StandardNonnullProperty<T>
-    extends AbstractProperty<T>
-    implements NonnullReadOnlyProperty<T> {
+public class StandardProperty<T> extends AbstractProperty<T> {
 
   private final FlowableProcessor<T> stream;
 
-  public StandardNonnullProperty(@Nonnull final T defaultValue) {
+  public StandardProperty(@Nonnull final T defaultValue) {
     super(defaultValue);
     final FlowableProcessor<T> unsafeStream = BehaviorProcessor.createDefault(
         defaultValue
