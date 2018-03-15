@@ -15,19 +15,16 @@ public interface Property<T> {
   /**
    * Gets the current value.
    */
-  @Nonnull
   T get();
 
   /**
    * Gets the default value.
    */
-  @Nonnull
   T getDefault();
 
   /**
    * Gets a stream of values emitted by this {@link Property}.
    */
-  @Nonnull
   Flowable<T> getStream();
 
   /**

@@ -21,7 +21,6 @@ public class StandardProperty<T> implements MutableProperty<T> {
     stream = BehaviorProcessor.createDefault(defaultValue);
   }
 
-  @Nonnull
   @Override
   public Flowable<T> getStream() {
     return stream;
@@ -33,13 +32,11 @@ public class StandardProperty<T> implements MutableProperty<T> {
   }
 
   @Override
-  @Nonnull
   public T get() {
     return stream.getValue();
   }
 
   @Override
-  @Nonnull
   public T getDefault() {
     return defaultValue;
   }

@@ -26,7 +26,6 @@ public class StandardObject implements Object {
   }
 
   @Override
-  @Nonnull
   public Flowable<EventObject> getEventStream() {
     return eventStream;
   }
