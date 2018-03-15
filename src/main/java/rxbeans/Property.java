@@ -36,10 +36,22 @@ public interface Property<T> {
     }
   }
 
+  default void getAndDoUnsafe(@Nonnull final UnsafeConsumer<T> function) throws Exception {
+    synchronized (this) {
+      function.acceptUnsafe(get());
+    }
+  }
+
   /**
    * Atomically applies a function on the value of this {@link Property} and returns its result.
    */
   default <R> R getAndDo(@Nonnull final Function<T, R> function) {
+    synchronized (this) {
+      return function.apply(get());
+    }
+  }
+
+  default <R> R getAndDoUnsafe(@Nonnull final UnsafeFunction<T, R> function) {
     synchronized (this) {
       return function.apply(get());
     }
