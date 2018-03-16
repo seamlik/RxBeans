@@ -3,7 +3,6 @@ package rxbeans;
 import io.reactivex.Flowable;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import javax.annotation.Nonnull;
 import javax.annotation.concurrent.ThreadSafe;
 
 /**
@@ -30,13 +29,13 @@ public interface Property<T> {
   /**
    * Atomically applies a function on the value of this {@link Property}.
    */
-  default void getAndDo(@Nonnull final Consumer<T> function) {
+  default void getAndDo(final Consumer<T> function) {
     synchronized (this) {
       function.accept(get());
     }
   }
 
-  default void getAndDoUnsafe(@Nonnull final UnsafeConsumer<T> function) throws Exception {
+  default void getAndDoUnsafe(final UnsafeConsumer<T> function) throws Exception {
     synchronized (this) {
       function.acceptUnsafe(get());
     }
@@ -45,13 +44,13 @@ public interface Property<T> {
   /**
    * Atomically applies a function on the value of this {@link Property} and returns its result.
    */
-  default <R> R getAndDo(@Nonnull final Function<T, R> function) {
+  default <R> R getAndDo(final Function<T, R> function) {
     synchronized (this) {
       return function.apply(get());
     }
   }
 
-  default <R> R getAndDoUnsafe(@Nonnull final UnsafeFunction<T, R> function) {
+  default <R> R getAndDoUnsafe(final UnsafeFunction<T, R> function) {
     synchronized (this) {
       return function.apply(get());
     }

@@ -11,7 +11,8 @@ repositories {
 
 dependencies {
   api 'com.google.code.findbugs:jsr305:3.0.2'
-  api 'io.reactivex.rxjava2:rxjava:2.1.8'
+  api 'io.reactivex.rxjava2:rxjava:2.1.10'
+  api "org.checkerframework:checker-qual:2.4.0"
 }
 
 javadoc {
@@ -19,6 +20,7 @@ javadoc {
     links(
         'https://docs.oracle.com/javase/9/docs/api',
         'http://reactivex.io/RxJava/javadoc',
+        'https://checkerframework.org/api',
         'https://static.javadoc.io/com.google.code.findbugs/jsr305/3.0.2'
     )
     addBooleanOption('javafx', true)

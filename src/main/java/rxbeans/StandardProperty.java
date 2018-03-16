@@ -2,7 +2,6 @@ package rxbeans;
 
 import io.reactivex.Flowable;
 import io.reactivex.processors.BehaviorProcessor;
-import javax.annotation.Nonnull;
 
 /**
  * Reference implementation of {@link Property}.
@@ -16,7 +15,7 @@ public class StandardProperty<T> implements MutableProperty<T> {
   /**
    * Default constructor.
    */
-  public StandardProperty(@Nonnull final T defaultValue) {
+  public StandardProperty(final T defaultValue) {
     this.defaultValue = defaultValue;
     stream = BehaviorProcessor.createDefault(defaultValue);
   }
@@ -27,7 +26,7 @@ public class StandardProperty<T> implements MutableProperty<T> {
   }
 
   @Override
-  public synchronized void set(@Nonnull T value) {
+  public synchronized void set(T value) {
     stream.onNext(value);
   }
 

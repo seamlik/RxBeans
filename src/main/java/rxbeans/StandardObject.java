@@ -4,7 +4,6 @@ import io.reactivex.Flowable;
 import io.reactivex.processors.FlowableProcessor;
 import io.reactivex.processors.PublishProcessor;
 import java.util.EventObject;
-import javax.annotation.Nonnull;
 
 /**
  * Reference implementation of {@link Object}.
@@ -21,7 +20,7 @@ public class StandardObject implements Object {
     eventStream = unsafeStream.toSerialized();
   }
 
-  protected void fireEvent(@Nonnull final EventObject event) {
+  protected void fireEvent(final EventObject event) {
     eventStream.onNext(event);
   }
 
