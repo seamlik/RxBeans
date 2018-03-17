@@ -35,9 +35,23 @@ public interface Property<T> {
     }
   }
 
-  default void getAndDoUnsafe(final UnsafeConsumer<T> function) throws Exception {
+  /**
+   * Atomically applies a function on the value of this {@link Property}.
+   */
+  default <X extends Exception> void
+  getAndDoUnsafe(final Class<X> exType, final UnsafeConsumer<T> function) throws X {
     synchronized (this) {
-      function.acceptUnsafe(get());
+      try {
+        function.acceptUnsafe(get());
+      } catch (RuntimeException ex) {
+        throw ex;
+      } catch (Exception ex) {
+        if (exType.isInstance(ex)) {
+          throw exType.cast(ex);
+        } else {
+          throw new RuntimeException(ex);
+        }
+      }
     }
   }
 
@@ -50,9 +64,23 @@ public interface Property<T> {
     }
   }
 
-  default <R> R getAndDoUnsafe(final UnsafeFunction<T, R> function) {
+  /**
+   * Atomically applies a function on the value of this {@link Property}.
+   */
+  default <R, X extends Exception> R
+  getAndDoUnsafe(final Class<X> exType, final UnsafeFunction<T, R> function) throws X {
     synchronized (this) {
-      return function.apply(get());
+      try {
+        return function.applyUnsafe(get());
+      } catch (RuntimeException ex) {
+        throw ex;
+      } catch (Exception ex) {
+        if (exType.isInstance(ex)) {
+          throw exType.cast(ex);
+        } else {
+          throw new RuntimeException(ex);
+        }
+      }
     }
   }
 }
