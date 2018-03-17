@@ -1,7 +1,9 @@
 package rxbeans;
 
+import java.util.function.Function;
+
 @FunctionalInterface
-public interface UnsafeFunction<T, R> extends java.util.function.Function<T, R> {
+public interface UnsafeFunction<T, R> extends Function<T, R> {
 
   R applyUnsafe(T o) throws Exception;
 

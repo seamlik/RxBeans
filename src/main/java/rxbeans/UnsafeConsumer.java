@@ -1,7 +1,9 @@
 package rxbeans;
 
+import java.util.function.Consumer;
+
 @FunctionalInterface
-public interface UnsafeConsumer<T> extends java.util.function.Consumer<T> {
+public interface UnsafeConsumer<T> extends Consumer<T> {
 
   void acceptUnsafe(T o) throws Exception;
 
