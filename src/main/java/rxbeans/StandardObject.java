@@ -20,7 +20,7 @@ public class StandardObject implements Object {
     eventStream = unsafeStream.toSerialized();
   }
 
-  protected void fireEvent(final EventObject event) {
+  protected void triggerEvent(final EventObject event) {
     eventStream.onNext(event);
   }
 
