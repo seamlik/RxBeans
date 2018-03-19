@@ -1,6 +1,18 @@
 apply plugin: 'java-library'
 apply plugin: 'maven-publish'
 
+ext {
+  checkerFrameworkVersion = '2.4.0'
+  checkerFrameworkProcessors = [
+      'org.checkerframework.checker.interning.InterningChecker',
+      'org.checkerframework.checker.nullness.NullnessChecker',
+      'org.checkerframework.checker.optional.OptionalChecker'
+  ]
+  checkerFrameworkSkipUses = [
+      '^io\\.reactivex\\.'
+  ]
+}
+
 group = 'rxbeans'
 sourceCompatibility = 8
 version = '0.1'
@@ -9,10 +21,21 @@ repositories {
     jcenter()
 }
 
+configurations {
+  checkerFrameworkCheckerJar {
+    description = 'the Checker Framework, including the Type Annotations compiler'
+  }
+  checkerFrameworkAnnotatedJDK {
+    description = 'a copy of JDK classes with Checker Framework type qualifers inserted'
+  }
+}
+
 dependencies {
   api 'com.google.code.findbugs:jsr305:3.0.2'
   api 'io.reactivex.rxjava2:rxjava:2.1.10'
-  api "org.checkerframework:checker-qual:2.4.0"
+  api "org.checkerframework:checker-qual:$checkerFrameworkVersion"
+  checkerFrameworkAnnotatedJDK "org.checkerframework:jdk8:$checkerFrameworkVersion"
+  checkerFrameworkCheckerJar "org.checkerframework:checker:$checkerFrameworkVersion"
 }
 
 javadoc {
@@ -33,6 +56,15 @@ publishing {
       from components.java
     }
   }
+}
+
+tasks.withType(JavaCompile) {
+  options.compilerArgs.addAll([
+      '-processorpath', "${configurations.checkerFrameworkCheckerJar.asPath}".toString(),
+      "-Xbootclasspath/p:${configurations.checkerFrameworkAnnotatedJDK.asPath}".toString(),
+      '-processor', rootProject.checkerFrameworkProcessors.join(','),
+      "-AskipUses=${rootProject.checkerFrameworkSkipUses.join('|')}".toString()
+  ])
 }
 
 defaultTasks 'assemble', 'javadoc'
