@@ -20,12 +20,12 @@ public class StandardObject implements Object {
     eventStream = unsafeStream.toSerialized();
   }
 
-  protected void triggerEvent(final EventObject event) {
+  protected final void triggerEvent(final EventObject event) {
     eventStream.onNext(event);
   }
 
   @Override
-  public Flowable<EventObject> getEventStream() {
+  public final Flowable<EventObject> getEventStream() {
     return eventStream;
   }
 }
