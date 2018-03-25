@@ -11,15 +11,9 @@ import org.checkerframework.checker.initialization.qual.UnknownInitialization;
  */
 public class StandardObject implements Object {
 
-  private final FlowableProcessor<EventObject> eventStream;
-
-  /**
-   * Default constructor.
-   */
-  public StandardObject() {
-    final FlowableProcessor<EventObject> unsafeStream = PublishProcessor.create();
-    eventStream = unsafeStream.toSerialized();
-  }
+  private final FlowableProcessor<EventObject> eventStream = PublishProcessor
+      .<EventObject>create()
+      .toSerialized();
 
   protected final void triggerEvent(
       @UnknownInitialization(StandardObject.class) StandardObject this,
