@@ -4,6 +4,7 @@ import io.reactivex.Flowable;
 import io.reactivex.processors.FlowableProcessor;
 import io.reactivex.processors.PublishProcessor;
 import java.util.EventObject;
+import org.checkerframework.checker.initialization.qual.UnknownInitialization;
 
 /**
  * Reference implementation of {@link Object}.
@@ -20,12 +21,17 @@ public class StandardObject implements Object {
     eventStream = unsafeStream.toSerialized();
   }
 
-  protected final void triggerEvent(final EventObject event) {
+  protected final void triggerEvent(
+      @UnknownInitialization(StandardObject.class) StandardObject this,
+      final EventObject event
+  ) {
     eventStream.onNext(event);
   }
 
   @Override
-  public final Flowable<EventObject> getEventStream() {
+  public final Flowable<EventObject> getEventStream(
+      @UnknownInitialization(StandardObject.class) StandardObject this
+  ) {
     return eventStream;
   }
 }
