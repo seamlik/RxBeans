@@ -6,7 +6,6 @@ import javax.annotation.concurrent.ThreadSafe;
 
 /**
  * Reference implementation of {@link Property}.
- * @param <T>
  */
 @ThreadSafe
 public class StandardProperty<T> implements MutableProperty<T> {

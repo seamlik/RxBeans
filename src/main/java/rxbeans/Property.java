@@ -7,6 +7,7 @@ import javax.annotation.concurrent.ThreadSafe;
 
 /**
  * Property without write access.
+ * @param <T> Type of the property.
  */
 @ThreadSafe
 public interface Property<T> {
