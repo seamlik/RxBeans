@@ -3,24 +3,24 @@ package rxbeans;
 import java.util.EventObject;
 
 /**
- * Indicates an exception is thrown in an async realm.
+ * Indicates a {@link Throwable} is thrown in the async realm.
  */
 public class ExceptionCaughtEvent extends EventObject {
 
-  private final Exception exception;
+  private final Throwable cause;
 
   /**
    * Default constructor.
    */
-  public ExceptionCaughtEvent(java.lang.Object source, Exception exception) {
+  public ExceptionCaughtEvent(final java.lang.Object source, final Throwable cause) {
     super(source);
-    this.exception = exception;
+    this.cause = cause;
   }
 
   /**
-   * Gets the exception.
+   * Gets the cause.
    */
-  public Exception getException() {
-    return exception;
+  public Throwable getCause() {
+    return cause;
   }
 }
