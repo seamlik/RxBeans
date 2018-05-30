@@ -3,13 +3,11 @@ package rxbeans;
 import io.reactivex.Flowable;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import javax.annotation.concurrent.ThreadSafe;
 
 /**
- * Property without write access.
+ * Property without write access. All implementations must be thread-safe.
  * @param <T> Type of the property.
  */
-@ThreadSafe
 public interface Property<T> {
 
   /**

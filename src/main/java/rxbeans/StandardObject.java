@@ -4,13 +4,11 @@ import io.reactivex.Flowable;
 import io.reactivex.processors.FlowableProcessor;
 import io.reactivex.processors.PublishProcessor;
 import java.util.EventObject;
-import javax.annotation.concurrent.ThreadSafe;
 import org.checkerframework.checker.initialization.qual.UnknownInitialization;
 
 /**
- * Reference implementation of {@link Object}.
+ * Reference implementation of {@link Object}. This class is thread-safe.
  */
-@ThreadSafe
 public class StandardObject implements Object {
 
   private final FlowableProcessor<EventObject> eventStream = PublishProcessor

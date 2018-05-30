@@ -2,12 +2,10 @@ package rxbeans;
 
 import io.reactivex.Flowable;
 import io.reactivex.processors.BehaviorProcessor;
-import javax.annotation.concurrent.ThreadSafe;
 
 /**
  * Reference implementation of {@link Property}.
  */
-@ThreadSafe
 public class StandardProperty<T> implements MutableProperty<T> {
 
   private final BehaviorProcessor<T> stream;

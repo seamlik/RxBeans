@@ -1,12 +1,10 @@
 package rxbeans;
 
 import java.util.Objects;
-import javax.annotation.concurrent.ThreadSafe;
 
 /**
  * {@link Property} with write access.
  */
-@ThreadSafe
 public interface MutableProperty<T> extends Property<T> {
 
   /**
