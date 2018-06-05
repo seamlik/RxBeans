@@ -38,4 +38,9 @@ public class StandardProperty<T> implements MutableProperty<T> {
   public T getDefault() {
     return defaultValue;
   }
+
+  @Override
+  public String toString() {
+    return get().toString();
+  }
 }
