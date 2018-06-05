@@ -8,7 +8,8 @@ import java.util.Objects;
 public interface MutableProperty<T> extends Property<T> {
 
   /**
-   * Sets a new value.
+   * Sets a new value. Implementations are not required to enforce the
+   * immutability of values being set here.
    */
   void set(T value);
 
